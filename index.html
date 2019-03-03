@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Project Maker</title>
+	<title>Project Hacker!</title>
+	<!-- STYLESHEETS -->
+	<link rel="stylesheet" type="text/css" href="styles.css"/>
 	<script type="text/javascript" src="scripts.js"></script>
 </head>
 <body>
-	<div id="response"></div>
-	<script type="text/javascript">
-		setup("latch",25);
-	</script>
+	<header id="header">
+		Project Hacker!
+	</header>
+	<main>
+		<form onsubmit="formsubmit(event)" id='topicform' align='center'>
+			<input type="text" name="topic" required id='topic' placeholder="Topic" /><br/><br/>
+			<input type="number" min="2" placeholder="Number Of Paragraphs" required name="npara" id='npara'>
+			<br/>
+			<br/>
+			<button type="submit">Search</button>
+		</form>
+		<div id="response"></div>
+		<div id="response1"></div>
+	</main>
 </body>
 </html>

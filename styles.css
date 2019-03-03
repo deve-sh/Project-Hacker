@@ -1,0 +1,81 @@
+/*
+	Styles for Project Hacker!
+*/
+
+/* Fonts */
+
+@import url('https://fonts.googleapis.com/css?family=Lato|Montserrat');
+
+*{
+	box-sizing: border-box;
+	transition: 0.1s;
+}
+
+body{
+	padding: 0;
+	margin: 0;
+	background: #343a40;
+	color: #ffffff;
+	font-size: 1em;
+	line-height: 1.6;
+	font-family: "Lato",'Montserrat',sans-serif;
+}
+
+main{
+	padding: 1rem;
+	margin: 0;
+}
+
+#header{
+	padding: 1rem;
+	background: #165caa;
+	color: #ffffff;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+#response{
+	padding: 0.8rem;
+	display: none;
+	background: #2d3034;
+}
+
+#response1{
+	display: none;
+}
+
+#topicform{
+	padding: 1rem;
+	color: #ffffff;
+}
+
+#topicform input{
+	padding: 0.7rem;
+	color: #000000;
+	font-family: 'Montserrat',sans-serif;
+	width: 100%;
+	border: none;
+	outline: none;
+	border-radius: 0.1rem;
+	box-shadow: 0 5px 20px 0 rgba(0,0,0,0.05);
+	font-size: 1em;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+#topicform button{
+	color: #ffffff;
+	box-shadow: 0 5px 20px 0 rgba(0,0,0,0.05);
+	background: #dc3528;
+	padding: 1rem;
+	border: none;
+	outline: none;
+}

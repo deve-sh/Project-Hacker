@@ -8,12 +8,18 @@
 
 let endpoint = "https://en.wikipedia.org/w/api.php?format=json&origin=*&action=query&prop=extracts&titles=";	// Wikipedia API Endpoint
 
-// Creating a complete new Prototype for Strings to remove all the occurances of a particular string inside it. Credit : https://stackoverflow.com/a/17606289/10145649
+// Form Submission Function
 
-String.prototype.replaceAll = function(search, replacement) {
-    var target = this;
-    return target.replace(new RegExp(search, 'g'), replacement);
-};
+function formsubmit(e){
+	
+	e.preventDefault(); // Preventing Page Refresh or Redirect.
+
+	if(document.getElementById('topic').value && document.getElementById('npara').value){
+		document.getElementById('response').style.display = "block";
+		document.getElementById('response').innerHTML = "<div align='center'>Fetching Everything!</div>";
+		setup(encodeURIComponent(document.getElementById('topic').value),encodeURIComponent(document.getElementById('npara').value));
+	}
+}
 
 // Main Function
 
@@ -46,39 +52,37 @@ function setup(titletosearch='',npara=5){
 
 			let string = parseddata.query.pages[pagekeys[0]].extract;
 
-			string = string.replaceAll("</p>","<br><br>");
+			document.getElementById('response1').innerHTML = string;
+			document.getElementById('response').innerHTML = "";
 
-			let arrayofparas = string.split("<p>");		// Splitting the whole obtained extract in accordance with the number of paragraphs.
-
-			let htmlstring = "";
+			let listofel = document.getElementById('response1').getElementsByTagName('*');
 
 			let count = 0;	// Counter to keep track of the number of paragraphs.
 
-			for(let i=0;i<npara;i++){
-
-				if(count<npara){
-					if(arrayofparas[i].includes("mw-empty") || arrayofparas[i].includes("<blockquote>") || arrayofparas[i].includes("<h3>") || arrayofparas[i].includes("h2") || arrayofparas[i].includes("<h1>") || arrayofparas[i].includes("<h4>")){
-						
-						if(count==npara-2){
-							count++;
-							continue;
-						}
-					}
-					else{
+			for(let i=0;count<npara;i++){
+				if(listofel[i]){
+					if(!listofel[i].classList.contains('mw-empty-elt') && listofel[i].tagName === 'P')
+					{
+						document.getElementById('response').innerHTML += (`<p>${listofel[i].innerHTML}</p>`);
 						count++;
 					}
-
-					if(arrayofparas[i].includes("gallerybox"))
-						continue;
-					
-					htmlstring+=arrayofparas[i];
+					else{
+						if(listofel[i].tagName!='SPAN'){	// Not Printing any Span Elements As they are subparts of other elements.
+							document.getElementById('response').innerHTML += (`<${listofel[i].tagName}>${listofel[i].innerText}</${listofel[i].tagName}>`);
+						}
+					}				
+				}
+				else{
+					break;	// Probably Signifies that the number of elements available ended.
 				}
 			}
 
-			document.getElementById('response').innerHTML = htmlstring;
+			document.getElementById('response').style.display = "block";
+
+			document.getElementById('response1').innerHTML = "";	// Deleting the element.
 		}
 		else{
-			document.getElementById('response').innerHTML = "<div class='errormessage'>No Such Essay could be formed.</div>";
+			document.getElementById('response').innerHTML = "<div class='errormessage' align='center'>No Such Essay could be formed.</div>";
 		}
 	}
 }
