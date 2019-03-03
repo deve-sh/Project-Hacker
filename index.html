@@ -5,6 +5,9 @@
 	<!-- STYLESHEETS -->
 	<link rel="stylesheet" type="text/css" href="styles.css"/>
 	<script type="text/javascript" src="scripts.js"></script>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 	<header id="header">
@@ -13,12 +16,16 @@
 	<main>
 		<form onsubmit="formsubmit(event)" id='topicform' align='center'>
 			<input type="text" name="topic" required id='topic' placeholder="Topic" /><br/><br/>
-			<input type="number" min="2" placeholder="Number Of Paragraphs" required name="npara" id='npara'>
+			<input type="number" min="2" placeholder="Number Of Paragraphs (Lists and Headings Not Included)" required name="npara" id='npara'>
 			<br/>
 			<br/>
 			<button type="submit">Search</button>
 		</form>
 		<div id="response"></div>
+		<br>
+		<div align="center">
+			<div onclick="copytext()" id="copybutton">Copy</div>
+		</div>
 		<div id="response1"></div>
 	</main>
 </body>

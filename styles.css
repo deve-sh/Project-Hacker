@@ -27,7 +27,7 @@ main{
 }
 
 #header{
-	padding: 1rem;
+	padding: 1.3rem;
 	background: #165caa;
 	color: #ffffff;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -37,6 +37,7 @@ main{
 	padding: 0.8rem;
 	display: none;
 	background: #2d3034;
+	border-radius: 0.15rem;
 }
 
 #response1{
@@ -76,6 +77,18 @@ input[type=number] {
 	box-shadow: 0 5px 20px 0 rgba(0,0,0,0.05);
 	background: #dc3528;
 	padding: 1rem;
+	border-radius: 0.1rem;
 	border: none;
 	outline: none;
+}
+
+#copybutton{
+	padding: 1rem;
+	color: #ffffff;
+	cursor: pointer;
+	background: #00ad9f;
+	border-radius: 0.1rem;
+	display: none;
+	font-size: 0.85em;
+	box-shadow: 0 5px 20px 0 rgba(0,0,0,0.05);
 }

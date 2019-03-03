@@ -15,6 +15,7 @@ function formsubmit(e){
 	e.preventDefault(); // Preventing Page Refresh or Redirect.
 
 	if(document.getElementById('topic').value && document.getElementById('npara').value){
+		document.getElementById('copybutton').style.display = "none";
 		document.getElementById('response').style.display = "block";
 		document.getElementById('response').innerHTML = "<div align='center'>Fetching Everything!</div>";
 		setup(encodeURIComponent(document.getElementById('topic').value),encodeURIComponent(document.getElementById('npara').value));
@@ -59,16 +60,25 @@ function setup(titletosearch='',npara=5){
 
 			let count = 0;	// Counter to keep track of the number of paragraphs.
 
-			for(let i=0;count<npara;i++){
+			for(let i=0;count<npara && i<listofel.length;i++){
 				if(listofel[i]){
 					if(!listofel[i].classList.contains('mw-empty-elt') && listofel[i].tagName === 'P')
 					{
-						document.getElementById('response').innerHTML += (`<p>${listofel[i].innerHTML}</p>`);
-						count++;
+						if(listofel[i].innerHTML!=="<br>" && listofel[i].innerText!=""){
+							document.getElementById('response').innerHTML += (`<p>${listofel[i].innerHTML}</p>`);
+							count++;
+						}
+						continue;
 					}
 					else{
-						if(listofel[i].tagName!='SPAN'){	// Not Printing any Span Elements As they are subparts of other elements.
-							document.getElementById('response').innerHTML += (`<${listofel[i].tagName}>${listofel[i].innerText}</${listofel[i].tagName}>`);
+						if(!listofel[i].classList.contains("gallerybox"))	// Empty List Items
+						{
+							if(listofel[i].tagName!='SPAN'){	// Not Printing any Span Elements As they are subparts of other elements.
+								if(listofel[i].tagName === 'I'){
+									document.getElementById('response').innerHTML += "&nbsp&nbsp";
+								}
+								document.getElementById('response').innerHTML += (`<${listofel[i].tagName}>${listofel[i].innerText}</${listofel[i].tagName}>`);
+							}
 						}
 					}				
 				}
@@ -78,11 +88,34 @@ function setup(titletosearch='',npara=5){
 			}
 
 			document.getElementById('response').style.display = "block";
+			document.getElementById('copybutton').style.display = "inline-block";
 
 			document.getElementById('response1').innerHTML = "";	// Deleting the element.
 		}
 		else{
+			document.getElementById('copybutton').style.display = "none";
 			document.getElementById('response').innerHTML = "<div class='errormessage' align='center'>No Such Essay could be formed.</div>";
 		}
 	}
+}
+
+/* Function to Copy From the Response Division */
+
+function copytext(){
+	  var target = document.getElementById('response');
+	  var range, select;
+	  if (document.createRange) {
+	    range = document.createRange();
+	    range.selectNode(target)
+	    select = window.getSelection();
+	    select.removeAllRanges();
+	    select.addRange(range);
+	    document.execCommand('copy');
+	    select.removeAllRanges();
+	  } else {
+	    range = document.body.createTextRange();
+	    range.moveToElementText(target);
+	    range.select();
+	    document.execCommand('copy');
+	  }
 }
