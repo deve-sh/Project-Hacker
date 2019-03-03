@@ -74,7 +74,7 @@ function setup(titletosearch='',npara=5){
 						if(!listofel[i].classList.contains("gallerybox"))	// Empty List Items
 						{
 							if(listofel[i].tagName!='SPAN'){	// Not Printing any Span Elements As they are subparts of other elements.
-								if(listofel[i].tagName === 'I'){
+								if(listofel[i].tagName === 'I' || listofel[i].tagName === 'B' || listofel[i].tagName === 'U'){
 									document.getElementById('response').innerHTML += "&nbsp&nbsp";
 								}
 								document.getElementById('response').innerHTML += (`<${listofel[i].tagName}>${listofel[i].innerText}</${listofel[i].tagName}>`);

@@ -18,7 +18,7 @@ body{
 	color: #ffffff;
 	font-size: 1em;
 	line-height: 1.6;
-	font-family: "Lato",'Montserrat',sans-serif;
+	font-family: 'Lato','Montserrat',sans-serif;
 }
 
 main{
@@ -38,6 +38,7 @@ main{
 	display: none;
 	background: #2d3034;
 	border-radius: 0.15rem;
+	font-family: 'Montserrat','Lato',sans-serif;
 }
 
 #response1{
