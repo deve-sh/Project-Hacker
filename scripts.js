@@ -8,6 +8,23 @@
 
 let endpoint = "https://en.wikipedia.org/w/api.php?format=json&origin=*&action=query&prop=extracts&titles=";	// Wikipedia API Endpoint
 
+// Display typing sentence.
+
+let projecttext = "Making a Project?";	// Text to type.
+let i = 0;	// Counter Variable
+
+const typer = () => {
+	if(i==projecttext.length){
+		clearInterval(y);
+	}
+	else{
+		document.getElementById('header').textContent += projecttext[i];
+		i++;
+	}
+}
+
+let y = setInterval(typer,80);
+
 // Form Submission Function
 
 function formsubmit(e){

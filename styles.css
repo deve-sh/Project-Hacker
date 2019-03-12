@@ -14,29 +14,53 @@
 body{
 	padding: 0;
 	margin: 0;
-	background: #343a40;
-	color: #ffffff;
+	background: #ffffff;
+	color: #343a40;
 	font-size: 1em;
 	line-height: 1.6;
 	font-family: 'Lato','Montserrat',sans-serif;
 }
 
 main{
-	padding: 1rem;
+	padding: 1.5rem;
 	margin: 0;
+	max-width: 100vw;
+	min-height: 100vh;
+	border-left: 0.5rem solid #404deb;
+}
+
+#headercontainer{
+	padding: 1rem;
+	padding-left: 0;
+	border-bottom: 0.3rem solid #000000;
+	display: inline-block;
+	font-size: 2.6em;
 }
 
 #header{
-	padding: 1.3rem;
-	background: #165caa;
-	color: #ffffff;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	color: #000000;
+	display: inline-block;
+}
+
+.blinker{
+	animation: blink 1s step-end infinite;
+}
+
+@keyframes blink{
+	from,to{opacity:1}
+	50%{opacity:0}
+}
+
+@-webkit-keyframes blink{
+	from,to{opacity:1}
+	50%{opacity:0}
 }
 
 #response{
 	padding: 0.8rem;
 	display: none;
 	background: #2d3034;
+	color: #ffffff;
 	border-radius: 0.15rem;
 	font-family: 'Montserrat','Lato',sans-serif;
 }
@@ -46,7 +70,6 @@ main{
 }
 
 #topicform{
-	padding: 1rem;
 	color: #ffffff;
 }
 
@@ -57,8 +80,8 @@ main{
 	width: 100%;
 	border: none;
 	outline: none;
+	border: 0.1rem solid #dfdfdf;
 	border-radius: 0.1rem;
-	box-shadow: 0 5px 20px 0 rgba(0,0,0,0.05);
 	font-size: 1em;
 }
 
@@ -75,10 +98,10 @@ input[type=number] {
 
 #topicform button{
 	color: #ffffff;
-	box-shadow: 0 5px 20px 0 rgba(0,0,0,0.05);
-	background: #dc3528;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px 0px;
+	background: #4f15d6;
 	padding: 1rem;
-	border-radius: 0.1rem;
+	border-radius:0.15rem;
 	border: none;
 	outline: none;
 }
@@ -88,8 +111,24 @@ input[type=number] {
 	color: #ffffff;
 	cursor: pointer;
 	background: #00ad9f;
-	border-radius: 0.1rem;
+	border-radius: 0.15rem;
 	display: none;
 	font-size: 0.85em;
-	box-shadow: 0 5px 20px 0 rgba(0,0,0,0.05);
+	box-shadow : rgba(0, 0, 0, 0.1) 0px 2px 4px 0px;
+}
+
+@media only screen and (max-width:900px),(max-height:400px){
+	/*	TABLETS	*/
+
+	#headercontainer{
+		font-size: 2em;
+	}
+}
+
+@media only screen and (max-width:600px),(max-height:300px){
+	/*	TABLETS	*/
+
+	#headercontainer{
+		font-size: 1.5em;
+	}
 }

@@ -10,10 +10,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<header id="header">
-		Project Hacker!
-	</header>
 	<main>
+		<div id="headercontainer">
+			<span id="header"></span> <span class='blinker'>|</span>
+		</div>
+		<br/><br/>
 		<form onsubmit="formsubmit(event)" id='topicform' align='center'>
 			<input type="text" name="topic" required id='topic' placeholder="Topic" /><br/><br/>
 			<input type="number" min="2" placeholder="Number Of Paragraphs (Lists and Headings Not Included)" required name="npara" id='npara'>
@@ -21,6 +22,7 @@
 			<br/>
 			<button type="submit">Search</button>
 		</form>
+		<br/>
 		<div id="response"></div>
 		<br>
 		<div align="center">
